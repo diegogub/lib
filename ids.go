@@ -14,9 +14,8 @@ func NewLongId(prefix string) string {
 	var id string
 	//var base int64 = 10 ^ 6
 	guid := xid.New()
-	guid2 := xid.New()
 
-	id = prefix + "-" + guid.String() + "-" + guid2.String()
+	id = guid.String()
 	/*
 		//random number
 		num := base + r.Int63n(999999999)
@@ -31,6 +30,5 @@ func NewLongId(prefix string) string {
 func NewShortId(prefix string) string {
 	var id string
 	id = xid.New().String()
-	id = prefix + "-" + prefix
 	return id
 }
