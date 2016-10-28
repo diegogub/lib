@@ -1,14 +1,8 @@
 package lib
 
 import (
-	"math/rand"
-	"strconv"
+	"github.com/rs/xid"
 	"strings"
-	"time"
-)
-
-var (
-	r *rand.Rand
 )
 
 func BuildPrefix(ids ...string) string {
@@ -18,20 +12,25 @@ func BuildPrefix(ids ...string) string {
 // Prefix should be unique within clusters
 func NewLongId(prefix string) string {
 	var id string
-	var base int = 10 ^ 24
-	//random number
-	num := base + r.Intn(999999999999999999)
-	// ticks
-	nsec := uint64(time.Now().UnixNano() / 100)
-	id = prefix + strconv.FormatUint(uint64(num), 32) + strconv.FormatUint(nsec, 32)
+	//var base int64 = 10 ^ 6
+	guid := xid.New()
+	guid2 := xid.New()
 
-	return strings.ToUpper(id)
+	id = prefix + "-" + guid.String() + "-" + guid2.String()
+	/*
+		//random number
+		num := base + r.Int63n(999999999)
+		// ticks
+		nsec := uint64(time.Now().UnixNano() / 100)
+		id = prefix + strconv.FormatUint(uint64(num), 32) + strconv.FormatUint(nsec, 32)
+	*/
+
+	return id
 }
 
 func NewShortId(prefix string) string {
 	var id string
-	// ticks
-	nsec := uint64(time.Now().UnixNano() / 100)
-	id = prefix + strconv.FormatUint(nsec, 32)
-	return strings.ToUpper(id)
+	id = xid.New().String()
+	id = prefix + "-" + prefix
+	return id
 }

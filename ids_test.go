@@ -38,6 +38,7 @@ func TestUniqueIds(t *testing.T) {
 				id := NewShortId("a")
 				err := ids.Exist(id)
 				if err != nil {
+					log.Println(id)
 					log.Println(err)
 				}
 			}
