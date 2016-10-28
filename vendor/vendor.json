@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "F6eWi/7Yl/rcMg9h3PWsgYQQkf0=",
+			"path": "github.com/rs/xid",
+			"revision": "057f3c928c207d1e7e318929eeac93bb46e319e3",
+			"revisionTime": "2016-03-15T14:06:58Z"
+		}
+	],
+	"rootPath": "github.com/diegogub/lib"
+}
